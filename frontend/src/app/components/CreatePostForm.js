@@ -2,14 +2,11 @@
 
 import { useState } from "react"
 
-export default function CreatePostForm() {
-    function createPost() {
-        console.log('creating post');
-    }
+export default function CreatePostForm({createPost}) {
 
     const [text, setText] = useState('')
     return (
-        <div className="mt-5">
+        <div className="mt-5 mx-2">
             <input 
                 value={text} 
                 onChange={e => setText(e.target.value)} 
@@ -17,11 +14,10 @@ export default function CreatePostForm() {
             />
             <button 
                 className="p-3 bg-green-500"
-                onClick={() => createPost()}    
+                onClick={() => createPost(text)}    
             >
                 Создать пост
             </button>
-            {text}
         </div>
     )
 }
