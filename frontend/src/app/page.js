@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 
 export default function Home() {
 
+  // states
   const [dataList, setDataList] = useState([
     {
       name: 'ОП',
@@ -28,19 +29,21 @@ export default function Home() {
   const [idCounter, setIdCounter] = useState(2)
   const [number, setNumber] = useState(3)
 
+  // hooks
   useEffect(() => {
     setPostList(dataList.map((data) => <PostElement data={data} key={data.id} />))
   },
   [dataList])
 
-  function createPost(value) {
+  // funs
+  function createPost(text, name = 'Аноним') {
     setDataList(
       [...dataList, {
-        name: 'Аноним',
+        name,
         dateTime: getDateTime(),
         number,
         links: [],
-        text: value,
+        text,
         id: idCounter
       }]
     )
