@@ -3,8 +3,12 @@
 import PostElement from './components/PostElement'
 import CreatePostForm from './components/CreatePostForm'
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
+
+  // store
+  // const test = useSelector(state => state.test)
 
   // states
   const [dataList, setDataList] = useState([
@@ -12,7 +16,13 @@ export default function Home() {
       name: 'ОП',
       dateTime: '24.08.2023 Чт 9:28:40',
       number: 1,
-      links: [1],
+      links: [
+        {
+          id: 0,
+          targetId: 1,
+          targetNumber: 2
+        }
+      ],
       text: 'Сап /б/',
       id: 0
     },
@@ -64,6 +74,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col p-24">
       {postList}
       <CreatePostForm createPost={createPost} />
+      {/* {test} */}
     </main>
   )
 }

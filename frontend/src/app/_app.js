@@ -1,9 +1,12 @@
 import React from 'react';
 import { wrapper } from './store'
+import { Provider } from 'react-redux';
 
 function App({ Component, pageProps }) {
     return (
-        <Component {...pageProps} />
+        <Provider store="store">
+            <Component {...pageProps} />
+        </Provider>
     );
 }
 
