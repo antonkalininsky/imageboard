@@ -1,10 +1,10 @@
+// styles
 import css from "./style.css"
-import React from 'react'
+// tools
 import { createRoot } from 'react-dom/client'
-
+// views
+import Main from './views/Main'
+// react setup
 document.body.innerHTML = '<div id="app"></div>'
-
 const root = createRoot(document.getElementById('app'))
-
-root.render(<h1>HALO BOLD</h1>)
-console.log('hello world 3')
+root.render(<Main />)

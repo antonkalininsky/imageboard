@@ -31,7 +31,12 @@ module.exports = {
                                     "targets": 'defaults'
                                 }
                             ],
-                            '@babel/preset-react'
+                            [
+                                '@babel/preset-react',
+                                {
+                                    "runtime": "automatic"
+                                }
+                            ]
                         ]
                     }
                 }]
