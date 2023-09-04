@@ -1,8 +1,12 @@
 'use client'
 
 import { useState } from "react"
+import { usePostsDispatch } from "../PostsContext"
 
-export default function CreatePostForm({ createPost }) {
+export default function CreatePostForm() {
+
+    // context imports
+    const postsActionDispatch = usePostsDispatch()
 
     // states
     const [name, setName] = useState('')
@@ -13,7 +17,14 @@ export default function CreatePostForm({ createPost }) {
         // validation
         if (text === '') return
         // submition
-        createPost(text, name || undefined)
+        postsActionDispatch({
+            type: 'add',
+            name: 'test1',
+            number: 13,
+            links: [],
+            text: 'test',
+            id: 1
+        })
         // cleanin
         setText('')
         setName('')
