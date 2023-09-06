@@ -1,9 +1,14 @@
 body {
+   padding: 0;
    background-color: lightblue;
 }
 
+.main {
+   padding-inline: 20px;
+}
+
 .post {
-   margin: 10px;
+   margin-bottom: 10px;
    padding: 15px;
    background-color: white;
    border-radius: 10px;
@@ -24,4 +29,12 @@ body {
 
 .post__body {
    margin: 0 0 10px 20px;
+}
+
+.link {
+   cursor: pointer;
+}
+
+.link:hover {
+   text-decoration: underline;
 }

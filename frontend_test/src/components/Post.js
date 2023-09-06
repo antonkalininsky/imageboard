@@ -3,48 +3,44 @@ import { useEffect, useState } from "react"
 export default function PostElement({ data }) {
 
     // states
-    const [links, setLinks] = useState([])
-    const [isLinkShown, setIsLinkShown] = useState(false)
+    const [answers, setAnswers] = useState([])
+    const [isAnswersShown, setIsAnswersShown] = useState(false)
 
     // hooks
     useEffect(() => {
-        linksCreator(data.links)
+        answersCreator(data.answers)
     },
-        [data.links, isLinkShown])
+        [JSON.stringify(data.answers)])
 
     // funs
-    function linksCreator(linksList) {
+    function answersCreator(answersList) {
         const result = []
-        linksList.forEach((link) => {
+        answersList.forEach((link) => {
             result.push(
                 <span
-                    key={link.id}
-                    className="text-green-600 hover:text-green-400 hover:underline cursor-pointer relative"
-                    onMouseEnter={() => setIsLinkShown(true)}
-                    onMouseLeave={() => setIsLinkShown(false)}
+                    className="link"
+                    key={link}
                 >
-                    &gt;&gt;{link.targetNumber}
-                    {
-                        isLinkShown && (
-                            <div className="p-3 bg-gray-500 absolute top-full left-0">
-                                hello world
-                            </div>
-                        )
-                    }
+                    &gt;&gt;{link}
                 </span>
             )
         })
-        setLinks(result)
+        setAnswers(result)
+    }
+
+    function handleLinkClick() {
+        console.log('hello world')
     }
 
     return (
-        <div className="m-2 p-4 bg-white max-w post">
+        <div className="post">
             {/* header */}
-            <div className="text-gray-500 post__header">
+            <div className="post__header">
                 <span>{data.name}</span>
                 <span>{data.dateTime}</span>
-                <span>{data.number}</span>
-                <button>опции</button>
+                <span onClick={handleLinkClick} className="link">№{data.id}</span>
+                {/* <span>{data.number}</span> */}
+                {/* <button>опции</button> */}
             </div>
             {/* body */}
             <div className="post__body">
@@ -52,7 +48,7 @@ export default function PostElement({ data }) {
             </div>
             {/* footer */}
             <div className="post__footer">
-                {links}
+                {answers}
             </div>
         </div>
     )

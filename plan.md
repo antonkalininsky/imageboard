@@ -1,9 +1,3 @@
-# new
-
-- [ ] начинаем с начала
-
-
-
 # imageboard plan
 
 - [x] create repo
